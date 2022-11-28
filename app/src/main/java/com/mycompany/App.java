@@ -8,7 +8,9 @@ public class App {
     public static void main(String[] args) {
 
         StateMachine sm = new StateMachine();
-        sm.run();
+        while(true) {
+            sm.run();
+        }
 
     }
 }

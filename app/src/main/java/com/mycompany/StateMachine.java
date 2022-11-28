@@ -1,18 +1,17 @@
 package com.mycompany;
 
 public class StateMachine {
-    private States state;
 
     public StateMachine() {
         States.currentState = States.INIT;
-        this.state = States.currentState;
+        if(States.currentState != null) {
+            States.currentState.entry();
+        }
     }
 
     public void run() {
-        if(state != null) {
-            state.entry();
-            state.exec();
-            state.exit();
+        if(States.currentState != null) {
+            States.currentState.exec();
         }
     }
 }

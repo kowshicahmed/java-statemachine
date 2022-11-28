@@ -19,19 +19,21 @@ public enum States implements Actions {
                 if(command.contains(signal.toString())) {
                     signal.transition();
                     System.out.println("transition to " + signal.name());
+                    break;
                 }
             }
         }
 
         @Override
         public void exit() {
-
+            currentState = nextState;
         }
     },
     INIT_ERROR {
         @Override
         public void entry() {
-
+            System.out.println("Entering init error");
+            currentState = States.INIT_ERROR;
         }
 
         @Override
@@ -48,6 +50,7 @@ public enum States implements Actions {
         @Override
         public void entry() {
             System.out.println("Entering Idle");
+            currentState = States.IDLE;
         }
 
         @Override
@@ -200,4 +203,5 @@ public enum States implements Actions {
     }
 
     public static States currentState;
+    public static States nextState;
 }
